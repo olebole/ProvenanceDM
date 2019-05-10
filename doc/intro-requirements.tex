@@ -1,56 +1,49 @@
-\subsection{Minimum requirements for provenance}\label{sec:requirements}
+\subsection{Minimum requirements for provenance information}\label{sec:requirements}
 
-We derived from our goals and use cases the following minimum requirements for the Provenance Data Model:
+This document was developed with those general requirements in mind:
 
 \begin{itemize}
 
-
 % == other models / serialisation
 
-\item Provenance information must be stored in a standard model, with standard serialization formats.
+\item Provenance information must be formalized following a standard model, with corresponding standard serialization formats.
 
 \item Provenance information must be machine readable.
 
-\item Provenance data model classes and attributes should be linked, when relevant, to IVOA semantics, data models and formats (DatasetDM, ObsCoreDM, SimDM, VOTable, UCDs, \ldots).
+\item Provenance data model classes and attributes should be linked, when relevant, to IVOA semantics, data models and formats (ObsCoreDM, SimDM, VOTable, UCDs, Units, \ldots).
 
 \item Provenance information should be serializable into the W3C provenance standard formats (PROV-N, PROV-XML, PROV-JSON) with minimum information loss.
 
+\end{itemize}
+
+The following additional requirements are recommended when managing provenance information within the VO context:
+
+\begin{itemize}
 
 % == links between entity/activity
 
-\item Provenance metadata must contain information to find immediate progenitor(s) (if existing) for a given entity, i.e. a dataset.
+\item Provenance information must be endorsed by an authority (the person, organization or project providing this information).
+
+\item Provenance metadata for a given entity must contain information to find immediate progenitor(s) up to an initial entity.
 %All produced entities must contain information to find its immediate progenitor(s).
 
-
-\item An entity must be linked to the activity that generated it (if the activity is recorded).
+\item An entity must be linked to the activity that generated it up to an initial entity.
 %Provenance metadata must contain information to find the activity that generated a given entity.
 %* All produced entities must contain information to find the activity that generated it
 
-\item Activities must be linked to input entities (if applicable).
+\item Activities must be linked to input entities up to an initial activity.
+%(if applicable).
 
-\item Activities may point to output entities.
+\item Activities should point to output entities.
 
-\item Provenance information should make it possible to derive the chronological sequence of activities.
+\item Provenance information should make it possible to derive the logical sequence of activities.
 %The order of the activities should be available.
 
 %\item Provenance information should contain the list of activities and progenitor entities.
 % too vague .... must be an ordered list ... One step should also be allowed.
-\end{itemize}
 
-% ==== Comment: 
-%These links can be used to trace back the sequence of processing steps (activities) and possibly the interim results.
-
-
-% == additional information
-
-\begin{itemize}
-
-% Released entities must have a unique, persistent identifier (DOI, obs_publisher_did, ...), at least in their domain.
-\item Entities, Activities and Agents must be uniquely identifiable within a domain and should have persistent identifiers.
+\item Entities, Activities and Agents must be uniquely identifiable within a domain.
 % Provenance information can only be given for uniquely identifiable entities, at least inside their domain.
-% comment: (DOI, obs_publisher_did, ...)
-% Thus entities have to have a unique, persistent identifier.
-% (to avoid ambiguities).
 
 \item Released entities should have a main contact.
 
@@ -58,14 +51,4 @@ We derived from our goals and use cases the following minimum requirements for t
 % could also be the documentation.
 
 \end{itemize}
-
-
-% Should this go into the requirements or the model?
-%\item Activities should be defined by following keywords (attributes):
-%    \begin{itemize}
-%    \item unique ID
-%    \item status (COMPLETED/ERROR/...)
-%
-%... (see working draft and data model)
-%* Entities should be defined by... (see working draft and data model)
 
